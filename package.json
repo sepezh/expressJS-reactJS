@@ -1,0 +1,62 @@
+{
+  "name": "fullstack",
+  "version": "1.0.0",
+  "description": "A full stack application with React and MongoDB (Easily deployed)",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p",
+    "deploy": "npm run build && git commit -a -m deployment && git push heroku master",
+    "dev": "webpack-dev-server --open",
+    "server": "cross-env NODE_ENV=production babel-node src/server",
+    "server-dev": "nodemon src/server --exec babel-node src/server",
+    "start-dev": "concurrently \"npm run server-dev\" \"npm run dev\"",
+    "server-spec": "babel-node src/server/server.spec",
+    "start": "npm run server"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "express",
+    "mongo"
+  ],
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.4.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "history": "^4.10.1",
+    "md5": "^2.2.1",
+    "mongodb": "^3.5.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.1.3",
+    "webpack": "^4.42.1",
+    "uuid": "^7.0.2"
+  },
+  "engines": {
+    "node": "10.15.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/register": "^7.9.0",
+    "babel-loader": "^8.1.0",
+    "concurrently": "^5.1.0",
+    "cross-env": "^7.0.2",
+    "highground": "^1.0.9",
+    "jest": "^25.2.3",
+    "mongodb": "^3.5.5",
+    "nodemon": "^2.0.2",
+    "style-loader": "^1.1.3",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
