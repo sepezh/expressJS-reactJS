@@ -3,18 +3,13 @@ import { connect } from "react-redux";
 import { ConnectedTaskList } from "./TaskList";
 
 export const Dashboard = ({ groups }) => (
-  <div>
-    <h2>Dashboard</h2>
-    {groups.map(group => (
-      <ConnectedTaskList id={group.id} name={group.name} key={group.id} />
+  <div className="row">
+    {groups.map((group) => (
+      <ConnectedTaskList key={group.id} {...group} className="col" />
     ))}
   </div>
 );
 
-function mapStateToProps(state) {
-  return {
-    groups: state.groups
-  };
-}
+const mapStateToProps = ({ groups }) => ({ groups });
 
 export const ConnectedDashboard = connect(mapStateToProps)(Dashboard);

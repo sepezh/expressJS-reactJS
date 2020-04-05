@@ -8,41 +8,53 @@ export const PROCESSING_AUTHENTICATE_USER = `PROCESSING_AUTHENTICATE_USER`;
 export const AUTHENTICATING = `AUTHENTICATING`;
 export const AUTHENTICATED = `AUTHENTICATED`;
 export const NOT_AUTHENTICATED = `NOT_AUTHENTICATED`;
+export const SET_STATE = `SET_STATE`;
+export const ADD_TASK_COMMENT = `ADD_TASK_COMMENT`;
+export const USERNAME_RESERVED = `USERNAME_RESERVED`;
+export const REQUEST_USER_ACCOUNT_CREATION = `REQUEST_USER_ACCOUNT_CREATION`;
 
-export const requestTaskCreation = groupID => ({
+export const setTaskCompletion = (id, isComplete = true) => ({
+  type: SET_TASK_COMPLETE,
+  taskID: id,
+  isComplete,
+});
+
+export const addTaskComment = (commentID, taskID, ownerID, content) => ({
+  type: ADD_TASK_COMMENT,
+  id: commentID,
+  task: taskID,
+  owner: ownerID,
+  content,
+});
+
+export const requestTaskCreation = (groupID) => ({
   type: REQUEST_TASK_CREATION,
-  groupID
+  groupID,
 });
 
 export const createTask = (taskID, groupID, ownerID) => ({
   type: CREATE_TASK,
   taskID,
   groupID,
-  ownerID
+  ownerID,
 });
 
-export const setTaskCompletion = (id, isComplete) => ({
-  type: SET_TASK_COMPLETE,
-  taskID: id,
-  isComplete
-});
-
-export const setTaskName = (id, name) => ({
-  type: SET_TASK_NAME,
-  taskID: id,
-  name
-});
-
-export const setTaskGroup = (id, groupID) => ({
+export const setTaskGroup = (taskID, groupID) => ({
   type: SET_TASK_GROUP,
-  taskID: id,
-  groupID
+  taskID,
+  groupID,
+});
+
+export const setTaskName = (taskID, name) => ({
+  type: SET_TASK_NAME,
+  taskID,
+  name,
 });
 
 export const requestAuthenticateUser = (username, password) => ({
   type: REQUEST_AUTHENTICATE_USER,
   username,
-  password
+  password,
 });
 
 export const processAuthenticateUser = (
@@ -51,5 +63,16 @@ export const processAuthenticateUser = (
 ) => ({
   type: PROCESSING_AUTHENTICATE_USER,
   session,
-  authenticated: status
+  authenticated: status,
+});
+
+export const setState = (state = {}) => ({
+  type: SET_STATE,
+  state,
+});
+
+export const requestCreateUserAccount = (username, password) => ({
+  type: REQUEST_USER_ACCOUNT_CREATION,
+  username,
+  password,
 });
